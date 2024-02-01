@@ -1,0 +1,85 @@
+Write a Program to implement circular linked list. If a user enters a negative value, the last node must be pointing to first node.
+
+Input Format
+
+Read elements upto -1
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+print output
+
+Sample Input 0
+
+1
+2
+3
+4
+-1
+Sample Output 0
+
+1
+2
+3
+4
+Sample Input 1
+
+1
+2
+3
+4
+5
+6
+-1
+Sample Output 1
+
+1
+2
+3
+4
+5
+6
+
+Code:
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Circular:
+    def __init__(self):
+        self.head=self.tail=None
+    def insert(self,x):
+        n=Node(x)
+        if self.head==None:
+            self.head=n
+            self.head.next=self.head
+        else:
+            temp=self.head
+            while temp.next!=self.head:
+                temp=temp.next
+            temp.next=n
+            n.next=self.head
+    def show(self):
+        if self.head==None:
+            print("List is Empty")
+        else:
+            temp=self.head
+            while temp.next!=self.head:
+                print(temp.data)
+                temp=temp.next
+            print(temp.data)
+        
+c1=Circular()
+while True:
+    x=int(input())
+    if x<1:
+        break
+    else:
+        c1.insert(x)
+c1.show()
+            
+        
