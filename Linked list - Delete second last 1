@@ -1,0 +1,91 @@
+Write a Program to delete the second last element from the list. If deletion of second last element is not possible, print "Deletion of second last element is not possible", Otherwise print the list after deleting the second last element.
+
+Input Format
+
+Read elements upto -1
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+print output
+
+Sample Input 0
+
+1
+2
+3
+4
+-1
+Sample Output 0
+
+Before deleting:
+1 2 3 4
+After deleting:
+1 2 4
+Sample Input 1
+
+23
+34
+55
+12
+66
+45
+33
+-1
+Sample Output 1
+
+Before deleting:
+23 34 55 12 66 45 33
+After deleting:
+23 34 55 12 66 33
+
+Code:
+
+class Node:
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None
+class Doubly:
+    def __init__(self):
+        self.head=self.tail=None
+    def create(self,x):
+        n=Node(x)
+        if self.head==None:
+            self.head=self.tail=n
+        else:
+            self.tail.right=n
+            n.left=self.tail
+            self.tail=n
+    def show(self):
+        if self.head==None:
+            print("empty")
+        temp=self.head
+        while temp!=None:
+            print(temp.val,end=" ")
+            temp=temp.right
+        print()
+    def delete(self,pos):
+        c=1
+        temp=self.tail
+        while temp.left!=None:
+            if pos==c:
+                temp.left.right=temp.right
+                temp.right.left=temp.left
+            c=c+1
+            temp=temp.left
+d=Doubly()
+while True:
+    x=int(input())
+    if x>0:
+        d.create(x)
+    else:
+        break
+print("Before deleting:")
+d.show()
+d.delete(2)
+print("After deleting:")
+d.show()
