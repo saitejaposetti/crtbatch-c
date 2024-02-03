@@ -38,7 +38,7 @@ while True:
     print("\n1.add Node\n2.add Edge\n3.show\n")
     ch=int(input("enter choice:"))
     if ch==1:
-        v=input()
+        v=input("Enter a node:")
         addNode(v)
     elif ch==2:
         node1=input("node1:")
